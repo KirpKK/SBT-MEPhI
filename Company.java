@@ -18,5 +18,6 @@ import java.util.List;
      public void addEmployee(Person employee) {
         if (employeeList == null) employeeList = new LinkedList<>();
         this.employeeList.add(employee);
-    }
+        employee.setCompany(name);
+	}
 }
