@@ -22,5 +22,6 @@ import java.util.List;
 	
      public void removeEmployee(Person employee) {
         if (employeeList != null) this.employeeList.remove(employee);
-    }
+		employee.setCompany(null);
+	}
 }
