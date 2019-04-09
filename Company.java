@@ -19,4 +19,8 @@ import java.util.List;
         if (employeeList == null) employeeList = new LinkedList<>();
         this.employeeList.add(employee);
     }
+	
+     public void removeEmployee(Person employee) {
+        if (employeeList != null) this.employeeList.remove(employee);
+    }
 }
