@@ -123,6 +123,6 @@ GAV (groupId:artifactId:version) зависимостей найти в инте
 Собрать проект
 	mvn clean package
 Запустить собранный jar
-	java -jar ./target/{artifactId}-{version}.jar 
+	java -jar ./{artifactId-with-Main-class}/target/{artifactId-with-Main-class}-{version}-jar-with-dependencies.jar 
 ```
 
