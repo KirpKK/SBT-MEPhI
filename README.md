@@ -68,51 +68,61 @@ Cделать в ветке feature3 два коммита
 ## Задание по maven
 
 ### 1. Установить maven 
+```
 Скачать установщик, установить. 
 Прописать переменные среды: 
 M2_HOME={путь до папки maven}
 Path=%Path%:%M2_HOME%\bin
 Проверить правильность установки
-´´´ mvn —version ´´´
+	mvn —version
+```
 
 ### 2. Инсталлировать архетипы
+```
 Перейти в репозиторий (директорию) SBT-MEPhI (или клонировать его заново)
 Скачать изменения из удаленного репозитория
-´´´ git fetch ´´´
+	git fetc
 Перейти в ветку company-archetype. 
-Инсталлировать архетип company-archetype в локальный репозиторий
-´´´ 
-cd company-archetype
-mvn clean install 
-´´´
+Инсталлировать архетип company-archetype в локальный репозиторий 
+	cd company-archetype
+	mvn clean install 
+```
 
 ### 3. Создать проект из архетипа company-archetype
-´´´ mvn archetype:generate -DarchetypeGroupId=ru.sbt.sbt-mephi -DarchetypeArtifactId=company-archetype -DarchetypeVersion=1.0 ´´´
+``` mvn archetype:generate -DarchetypeGroupId=ru.sbt.sbt-mephi -DarchetypeArtifactId=company-archetype -DarchetypeVersion=1.0 ```
 
 ### 4. Скомпилировать проект
-Перейти в директорию с созданным проектом (artifactId)
+```
+Перейти в директорию с созданным проектом (artifactId).
 Скомпилировать проект, добавив необходимые зависимости в pom.xml.
 GAV (groupId:artifactId:version) зависимостей найти в интернете. 
-´´´ mvn clean compile ´´´
+	mvn clean compile 
+```
 
 ### 5. Инсталлировать проект в локальный репозиторий 
-´´´ mvn clean install ´´´
+``` 
+	mvn clean install
 Убедиться, что артефакт есть в локальном репозитории. 
 Узнать путь до локального репозитория
-´´´ mvn help:evaluate -Dexpression=settings.localRepository ´´´
+	mvn help:evaluate -Dexpression=settings.localRepository
+```
 
 ### 6. Разбить проект на три модуля
+```
 Создать три папки, в каждую папку добавить pom.xml. 
 Перенести каждый класс в отдельный модуль. 
 Вынести зависимости из родительского pom.xml в дочерние. 
 Версию логгера вынести в property родительского pom.xml. 
 Инсталлировать проект в локальный репозиторий. 
+```
 
 ### 7. Сконфигурировать сборку 
+```
 Добавить в блок build родительского pom.xml конфигурацию для создания sources.jar. 
 Добавить профайл, в котором указать mainClass для manifest собираемого jar. 
 Собрать проект
-´´´ mvn clean package ´´´
+	mvn clean package
 Запустить собранный jar
-´´´ java -jar ./target/{artifactId}-{version}.jar ´´´
+	java -jar ./target/{artifactId}-{version}.jar 
+```
 
