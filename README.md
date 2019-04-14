@@ -81,7 +81,7 @@ Path=%Path%:%M2_HOME%\bin
 ```
 Перейти в репозиторий (директорию) SBT-MEPhI (или клонировать его заново)
 Скачать изменения из удаленного репозитория
-	git fetc
+	git fetch
 Перейти в ветку company-archetype. 
 Инсталлировать архетип company-archetype в локальный репозиторий 
 	cd company-archetype
