@@ -1,0 +1,11 @@
+<archetype>
+  <id>company-archetype</id>
+  <sources filtered="true" packaged="true">
+    <source>src/main/java/Company.java</source>
+    <source>src/main/java/Main.java</source>
+    <source>src/main/java/Person.java</source>
+  </sources>
+  <resources>
+    <resource>src/main/resources/log4j.properties</resource>
+  </resources>
+</archetype>
