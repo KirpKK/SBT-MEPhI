@@ -7,7 +7,6 @@ public class Person {
 
     String surname;
     String name;
-    String company;
 
     Person(String surname, String name) {
         this.surname = surname;
@@ -15,17 +14,8 @@ public class Person {
         LOGGER.info(this.toString() + " created");
     }
 
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-        LOGGER.info("Company is set to " + this.toString());
-    }
-
     @Override
     public String toString() {
-        return String.format("Person {surname=%s; name=%s; company=%s}", surname, name, company);
+        return String.format("Person {surname=%s; name=%s}", surname, name);
     }
 }

@@ -27,13 +27,11 @@ public class Company {
     public void addEmployee(Person employee) {
         if (employeeList == null) employeeList = new LinkedList();
         this.employeeList.add(employee);
-        employee.setCompany(name);
         LOGGER.info(employee.toString() + " is added to " + this.toString());
     }
 
     public void removeEmployee(Person employee) {
         if (employeeList != null) this.employeeList.remove(employee);
-        employee.setCompany(null);
         LOGGER.info(employee.toString() + " is removed from " + this.toString());
     }
 
