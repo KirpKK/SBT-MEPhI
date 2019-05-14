@@ -15,6 +15,7 @@
 
 
 ### 2.1 Запуск виртуальных машин - альтернативный способ
+** запускать только если предыдущий шаг неуспешен **
 Копируем локально `ansible-master.box`
 Вызываем `vagrant box add ansible-master.box --name ansible-master` из того же каталога, куда скачали box
 Редактируем `Vagrantfile` 
@@ -24,6 +25,16 @@
 
 ### 3. Подключаемся к виртуальной машине
 Запускаем `vagrant ssh`
+Готовим машину к работе
+Запускаем
+```
+sudo nano /etc/ansible/ansible.cfg
+```
+В секцию defaults добавляем строчку
+```
+host_key_checking = False
+```
+Сохраняем файл `ctrl+x' 'yes' 'enter'
 
 
 ### 4. Учебные задания
@@ -43,7 +54,7 @@ https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html
 
 Если коротко:
 Основная задача ansible - максимально облегчить процесс настройки и управления большим количеством типовых компьютеров.
-* Cattle not pets
+* Cattle not pets - формируем пул серверов, выполняющих одну функцию вместо одного
 ![Cattle not pets](/img/cattle.png)
 
 Для этого формируются:
@@ -57,6 +68,12 @@ https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html
 Запустите `ansible --version`
 Ожидаемый вывод:
 ```
+ansible 2.7.10
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 2.7.9 (default, Jun 29 2016, 13:08:31) [GCC 4.9.2]
 ```
 
 
@@ -76,6 +93,14 @@ https://ru.wikipedia.org/wiki/YAML
 Запустите `ansible -i inventory.yaml -m 'ping'` 
 Ожидаемый вывод (для случая корректно заполненного inventory):
 ```
+slave2 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+slave1 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
 ```
 
 Выше показан пример ad-hoc вызова - вызов одной команды для выбранных серверов.
@@ -92,7 +117,11 @@ https://docs.ansible.com/ansible/latest/modules/ping_module.html
 Запустите `ansible-playbook run_ping.yaml -i inventory.yaml`
 Просмотрите содержимое `run_ping.yaml`
 
-Мы сделали то же самое что и выше, но с использованием playbook-ов
+Мы сделали то же самое что и выше, но с использованием playbook-ов.
+
+Если нас интересует более детальный вывод - можно добавить ключ `-v` или `-vv` или еще больше v.
+`ansible-playbook run_ping.yaml -i inventory.yaml -v`
+
 Рекомендую прочитать:
 https://docs.ansible.com/ansible/latest/user_guide/playbooks.html
 https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html
