@@ -61,9 +61,14 @@ https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html
 
 
 
-### 4.1 Inventory файл
+### 4.2 Inventory файл
 Перед началом работы рекомендую прочитать:
 https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
+
+Основной формат для ansible - yaml. 
+Рекомендую прочитать:
+https://ru.wikipedia.org/wiki/YAML
+
 
 Зайдите в каталог `example1`, посмотрите содержимое `inventory.yaml`
 Дозаполните файл для slave2
@@ -82,5 +87,44 @@ https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html
 https://docs.ansible.com/ansible/latest/modules/ping_module.html
 
 
+### 4.3 Playbook
+Перейдите в каталог example2
+Запустите `ansible-playbook run_ping.yaml -i inventory.yaml`
+Просмотрите содержимое `run_ping.yaml`
+
+Мы сделали то же самое что и выше, но с использованием playbook-ов
+Рекомендую прочитать:
+https://docs.ansible.com/ansible/latest/user_guide/playbooks.html
+https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html
+
+### 4.4 Пример ошибок
+Измените в предыдущем примере inventory файл.
+Замените `192.168.77.12` на `192.168.77.99`.
+
+Запустите  `ansible-playbook run_ping.yaml -i inventory.yaml`.
+Ожидаемый результат - ошибка подключения к одному из 2х серверов.
+Обратите внимание, что для другого сервера playbook выполнился.
+  
+Поправьте `inventory.yaml`
+
+
+### 4.5 Debug
+Рекомендую прочитать:
+https://docs.ansible.com/ansible/latest/modules/debug_module.html
+
+Запустите  `ansible-playbook run_debug.yaml -i inventory.yaml`.
+
+Просмотрите содержимое `run_debug.yaml`
+Модуль debug позволяет выводить в лог переменные и сообщения.  
+Можно задавать или `msg` или `var`
+
+Обратите внимание на `"Система {{ inventory_hostname }}"` в фигурных скобках можно указывать имя переменной или python код.
+Результат его вызова будет подставлен в строку.
+
+ansible использует шаблонизатор jinja2 для формирования динамических плейбуков.
+Детальнее можно почитать тут:
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_templating.html
+и тут:
+http://jinja.pocoo.org/docs/2.10/
 
 
