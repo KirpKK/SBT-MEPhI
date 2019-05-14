@@ -1,36 +1,38 @@
 ## Задание по ansible 
 
 ### 1. Склонировать репозиторий
-Необходимо склонировать текущий репозиторий локально (ветку 'master')
-Запустить 'cmd.exe'
+Необходимо склонировать текущий репозиторий локально (ветку `master`)
+Запустить `cmd.exe`
 Перейти в каталог ansible внутри склонированного репозитория.
 Далее пути формируем относительно этого каталога.
 
 
 ### 2. Запуск виртуальных машин
-Запускаем 'vagrant up'
+Запускаем `vagrant up`
 Проверяем, что виртуальная машина запустилась, а не началась скачка box-а.
 Если начался процесс скачивания и он долгий, можно перейти к шагу 2.1
 
 
 ### 2.1 Запуск виртуальных машин - альтернативный способ
-Копируем локально 'ansible-master.box'
-Вызываем 'vagrant box add ansible-master.box --name ansible-master' из того же каталога, куда скачали box
-Редактируем 'Vagrantfile' 
-Заменяем 'main.vm.box = "ZaitsevSergey/ansible"' на 'main.vm.box = "ansible-master"'
-Запускаем 'vagrant up'
+Копируем локально `ansible-master.box`
+Вызываем `vagrant box add ansible-master.box --name ansible-master` из того же каталога, куда скачали box
+Редактируем `Vagrantfile` 
+Заменяем `main.vm.box = "ZaitsevSergey/ansible"` на `main.vm.box = "ansible-master"`
+Запускаем `vagrant up`
 
 
 ### 3. Подключаемся к виртуальной машине
-Запускаем 'vagrant ssh'
+Запускаем `vagrant ssh`
 
 
 ### 4. Учебные задания
 Немного теории:
 У вас на рабочих компьютерах запущены 3 виртуалки:
+```
 master - 192.168.77.10
 slave1 - 192.168.77.11
 slave2 - 192.168.77.12
+```
 
 Запуская vagrant ssh вы подключаетесь к master
 В каталоге /home/vagrant/shared у вас расположена часть репозитория с необходимыми файлами (запустите ls)
@@ -44,8 +46,8 @@ https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html
 ![Cattle not pets](/img/cattle.png)
 
 Для этого формируются:
-* Inventory - один или несколько файлов, описывающих конфигурацию серверов
-* Playbook - файл описывающий действия, которые необходимо произвести над серверами
+* `Inventory` - один или несколько файлов, описывающих конфигурацию серверов
+* `Playbook` - файл описывающий действия, которые необходимо произвести над серверами
 
 На master сервере запускается ansible, подключается по ssh к остальным компьютерам и проводит процесс изменения настроек серверов.
 
@@ -54,5 +56,5 @@ https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html
 Перед началом работы рекомендую прочитать:
 https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
 
-Зайдите в каталог 'example1', посмотрите содержимое 'inventory.yaml'
+Зайдите в каталог `example1`, посмотрите содержимое `inventory.yaml`
 
