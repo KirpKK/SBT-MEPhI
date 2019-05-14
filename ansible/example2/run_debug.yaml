@@ -6,7 +6,7 @@
 
     - name: "Вызов debug с переменной"
       debug:
-        var: hostvars
+        var: hostvars[inventory_hostname].ansible_all_ipv4_addresses
 
     - name: "Вызов debug с сообщением"
       debug:

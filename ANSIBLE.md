@@ -190,4 +190,42 @@ https://docs.ansible.com/ansible/latest/user_guide/playbooks_templating.html
 
 http://jinja.pocoo.org/docs/2.10/
 
+### 4.6 Gathering Facts
+
+По умолчанию, первой шаг, выполняемый ansible-ом после подключения к хосту - сбор информации о нем.
+Вся собранная информация помещается в hostvars. 
+Чтобы получить информацию о текущем хосте нужно обращаться к `hostvars[inventory_hostname]`
+
+Запустите
+```
+ansible-playbook run_gather.yaml -i inventory.yaml
+```
+
+И получите несколько экранов собранной информации.
+
+Чтобы облегчить чтение перенаправьте вывод в файл:
+```
+ansible-playbook run_gather.yaml -i inventory.yaml >data.txt
+```
+
+Обратите внимание, что поскольку мы работаем в расшареном каталоге, то он доступен как изнутри виртуальной машины, так и снаружи.
+Т.е. вы можете открыть полученный data.txt в вашем любимом редакторе (остальных файлов это тоже касается)
+
+Детальнее о фактах и переменных можно почитать тут:
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html
+
+### 4.7 Установка nginx
+
+Запустите 
+```
+ansible-playbook install_nginx.yaml -i inventory.yaml
+```
+После успешной отработки скрипта зайдите на адреса:
+http://localhost:8091/
+и 
+http://localhost:8091/
+
+На эти порты настроен форвардинг со slave1 и slave2 соответственно.
+Вы должны обнаружить страничку nginx
+
 

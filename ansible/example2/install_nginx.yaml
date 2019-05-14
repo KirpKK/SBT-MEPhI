@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+    - name: "Установка последней версии nginx"
+      apt: name=nginx state=latest
+      become: True
+
+    - name: "Запуск nginx"
+      become: True
+      service:
+        name: nginx
+        state: started
+...
