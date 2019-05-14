@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+    - name: "Вызов debug без параметров"
+      debug:
+
+    - name: "Вызов debug с переменной"
+      debug:
+        var: hostvars[inventory_hostname].ansible_all_ipv4_addresses
+
+    - name: "Вызов debug с сообщением"
+      debug:
+        msg: "Система {{ inventory_hostname }}"
+...
