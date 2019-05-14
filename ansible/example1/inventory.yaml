@@ -3,5 +3,9 @@ all:
   hosts:
     slave1:
       ansible_host: 192.168.77.11
+      ansible_user: vagrant
+      ansible_password: vagrant
     slave2:
       ansible_host: 192.168.77.12
+      ansible_user: vagrant
+      ansible_password: vagrant

@@ -11,6 +11,7 @@
 Запускаем `vagrant up`
 Проверяем, что виртуальная машина запустилась, а не началась скачка box-а.
 Если начался процесс скачивания и он долгий, можно перейти к шагу 2.1
+Проверьте, что запускается актуальная версия виртуальной машины (на текущий момент это 3.0.0).
 
 
 ### 2.1 Запуск виртуальных машин - альтернативный способ
@@ -34,8 +35,8 @@ slave1 - 192.168.77.11
 slave2 - 192.168.77.12
 ```
 
-Запуская vagrant ssh вы подключаетесь к master
-В каталоге /home/vagrant/shared у вас расположена часть репозитория с необходимыми файлами (запустите ls)
+Запуская `vagrant ssh` вы подключаетесь к `master`.
+В каталоге `/home/vagrant/shared` у вас расположена часть репозитория с необходимыми файлами (запустите ls).
 
 Перед началом работы с ansible рекомендую почитать документацию:
 https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html
@@ -52,9 +53,34 @@ https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html
 На master сервере запускается ansible, подключается по ssh к остальным компьютерам и проводит процесс изменения настроек серверов.
 
 
+### 4.1 Версия ansible
+Запустите `ansible --version`
+Ожидаемый вывод:
+```
+```
+
+
+
 ### 4.1 Inventory файл
 Перед началом работы рекомендую прочитать:
 https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
 
 Зайдите в каталог `example1`, посмотрите содержимое `inventory.yaml`
+Дозаполните файл для slave2
+
+Запустите `ansible -i inventory.yaml -m 'ping'` 
+Ожидаемый вывод (для случая корректно заполненного inventory):
+```
+```
+
+Выше показан пример ad-hoc вызова - вызов одной команды для выбранных серверов.
+Детальнее можно почитать тут:
+https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html
+
+
+Также выше используется модуль ping. Детальнее:
+https://docs.ansible.com/ansible/latest/modules/ping_module.html
+
+
+
 
