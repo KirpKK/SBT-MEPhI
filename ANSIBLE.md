@@ -1,4 +1,4 @@
-## Задание по ansible 
+﻿## Задание по ansible 
 
 ### 1. Склонировать репозиторий
 Необходимо склонировать текущий репозиторий локально (ветку `master`)
@@ -107,7 +107,7 @@ https://ru.wikipedia.org/wiki/YAML
 
 Дозаполните файл для slave2
 
-Запустите `ansible -i inventory.yaml -m 'ping'` 
+Запустите `ansible all -i inventory.yaml -m 'ping'` 
 
 Ожидаемый вывод (для случая корректно заполненного inventory):
 ```
