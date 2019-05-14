@@ -9,4 +9,6 @@ all:
       ansible_host: 192.168.77.12
       ansible_user: vagrant
       ansible_password: vagrant
+  vars:
+    student_name: "Иванов Иван Иванович"
 ...

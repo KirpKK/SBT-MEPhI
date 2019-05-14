@@ -1,0 +1,21 @@
+---
+- hosts: all
+  tasks:
+    - name: "Меняем страницу по умолчанию для nginx"
+      template:
+        src: home.html.j2
+        dest: /var/www/html/index.nginx-debian.html
+      become: True
+
+    - name: "Корректируем настройки nginx"
+      become: True
+      lineinfile:
+        path: /etc/nginx/nginx.conf
+        regexp: '^\s*charset '
+        insertafter: '^.*http\s*{'
+        line: 'charset UTF-8;'
+
+    - name: "Перезагружаем nginx чтобы подхватились новые настройки"
+      service: name=nginx state=restarted
+      become: True
+...

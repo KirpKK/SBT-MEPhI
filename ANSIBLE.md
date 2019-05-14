@@ -226,6 +226,35 @@ http://localhost:8091/
 http://localhost:8091/
 
 На эти порты настроен форвардинг со slave1 и slave2 соответственно.
-Вы должны обнаружить страничку nginx
+Вы должны обнаружить страничку "по умолчанию" nginx
 
 
+### 4.8 Шаблоны
+
+Рекомендую почитать:
+https://docs.ansible.com/ansible/latest/modules/template_module.html
+
+Сейчас мы на основе шаблона home.html.j2 изменим содержимое странички "по умолчанию"
+Запускаем 
+```
+ansible-playbook create_file_from_template.yaml -i inventory.yaml
+```
+Смотрим на странички
+http://localhost:8091/
+
+Хммм. получилось не вполне то, что нужно. Причина - в неверной конфигурации сервера.
+Поправим ее.
+ 
+Для этого нам поможет модуль lineinfile
+https://docs.ansible.com/ansible/latest/modules/lineinfile_module.html
+
+Запускаем
+```
+ansible-playbook create_file_from_template_v2.yaml -i inventory.yaml
+```
+
+И проверяем страничку. Стало лучше, но имя студента неправильное.
+Необходимо отредактировать `inventory.yaml` и поставить свое ФИО и повторно запустить плейбук.
+
+
+student_name 
