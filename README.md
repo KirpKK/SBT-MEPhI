@@ -228,3 +228,7 @@ maven -v
 Сборка -> команда shell -> java -jar proj_main-1.0-SNAPSHOT-jar-with-dependencies.jar
 Скачать fat-jar из сборочной директории.
 ```
+
+## 7. Ansible
+Задание по ansible можно найти в файле `ANSIBLE.md` рядом
+
